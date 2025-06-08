@@ -1,11 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace connect4
-{
+{   public class Player
+    {
+        public Player(string player1name)
+        {
+
+        }
+
+        public Player(string player1name, string player2name)
+        {
+
+        }
+
+        public void CreatePlayer(string number)
+        {
+            if (number == "1")
+            {
+
+            }
+            else if (number == "2")
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid player count");
+                return;
+            }
+        }
+    }
 
     public class Board
     {
@@ -42,13 +71,20 @@ namespace connect4
                 Console.WriteLine(" ");
             }
         }
+
+        public void Choice(int row, int column)
+        {
+
+        }
     }
     internal class Program
     {
         static void Main(string[] args)
         {
+            string i;
             Board board = new Board(7, 6);
             board.CreateBoard();
+            Console.WriteLine("How many players, 1 or 2?");
         }
     }
 }
