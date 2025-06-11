@@ -5,3 +5,10 @@ C:\Users\uzayr\Desktop\Audio Visual File\School\IntroductiontoOOP\connect4\obj\D
 C:\Users\uzayr\Desktop\Audio Visual File\School\IntroductiontoOOP\connect4\obj\Debug\connect4.csproj.CoreCompileInputs.cache
 C:\Users\uzayr\Desktop\Audio Visual File\School\IntroductiontoOOP\connect4\obj\Debug\connect4.exe
 C:\Users\uzayr\Desktop\Audio Visual File\School\IntroductiontoOOP\connect4\obj\Debug\connect4.pdb
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\bin\Debug\connect4.exe.config
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\bin\Debug\connect4.exe
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\bin\Debug\connect4.pdb
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\obj\Debug\connect4.csproj.AssemblyReference.cache
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\obj\Debug\connect4.csproj.CoreCompileInputs.cache
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\obj\Debug\connect4.exe
+C:\Users\angel\Downloads\IntroOOP-main\IntroOOP-main\connect4\obj\Debug\connect4.pdb
