@@ -36,17 +36,16 @@ namespace connect4 //Ignore commented out code please.
 //================================Board Object================================================
     public class Board
     {
-        private int Height = 7;
-        private int Width = 8;
-        public string[,] Array = new string[8,7]; //c# doesnt support Array[i].length for some reason. height and width of the array are hard coded
+        private int Height = 6;
+        private int Width = 7;
+        public string[,] Array; //c# doesnt support Array[i].length for some reason. height and width of the array are hard coded
         public Board()
         {
-            Array = new string[Width + 1, Height + 1];
+            Array = new string[Width, Height + 1];
         }
 //===============================Board Creation method==========================================
         public Board CreateBoard()
         {
-
 
             for (int i = 0; i < Height; i++) //This assigns all the squares in the array to '#' meaning empty
             {
@@ -56,7 +55,7 @@ namespace connect4 //Ignore commented out code please.
                 }
             }
 
-            /*for (int i = 0; i < Height; i++) //Prints the board with the current values in the array                                 //| DEBUG|
+            for (int i = 0; i < Height; i++) //Prints the board with the current values in the array                                 //| DEBUG|
             {
                 Console.Write("|   "); //When the line starts, prints the board border
                 for (int j = 0; j < Width; j++)
@@ -65,7 +64,7 @@ namespace connect4 //Ignore commented out code please.
                 }
                 Console.Write("   |"); //When the line ends, print the board border
                 Console.WriteLine(" ");
-            }*/
+            }
 
             Console.Write("|   ");
             for(int i = 0; i < Width; i++)
@@ -78,15 +77,23 @@ namespace connect4 //Ignore commented out code please.
         //======Board print method=========================
         public void PrintBoard() //This method reprints the board after every move. board.PrintBoard should be invoked after EVERYMOVE
         {
-            for(int i = 0;i < Height; i++)
+            for (int i = 0; i < Height; i++) //Prints the board with the current values in the array                                 //| DEBUG|
             {
-                Console.WriteLine("|   ");
-                for(int j = 0; j < Width; j++)
+                Console.Write("|   "); //When the line starts, prints the board border
+                for (int j = 0; j < Width; j++)
                 {
-                    Console.WriteLine(Array[i, j] + " ");
+                    Console.Write(Array[i, j] + " ");//Adds a space between each cell
                 }
-                Console.WriteLine("   |");
+                Console.Write("   |"); //When the line ends, print the board border
+                Console.WriteLine(" ");
             }
+
+            Console.Write("|   ");
+            for (int i = 0; i < Width; i++)
+            {
+                Console.Write(i + " "); //Prints the column number underneath the board
+            }
+            Console.WriteLine("   |");
         }
 
         /*public void Turn()
@@ -141,7 +148,8 @@ namespace connect4 //Ignore commented out code please.
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to connect 4\nPlease input 2 for 2 player mode, please input 1 to face off against an AI\nAI not implemented yet");
-            //board.CreateBoard(); //DEBUG
+            Board bo = new Board();
+            bo.CreateBoard(); //DEBUG
             string command = Console.ReadLine();
 
             while(command != "exit" || command != "Exit") 
@@ -150,7 +158,7 @@ namespace connect4 //Ignore commented out code please.
                 {
                     //List<Player> list = new List<Player>(); //DEBUG
                     Board board = new Board();
-
+                    board.CreateBoard();
                     Console.WriteLine("Please choose player 1's name");
                     string player1 = Console.ReadLine();
                     Player p1 = new Player(player1);
