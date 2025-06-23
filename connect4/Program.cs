@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -156,83 +157,67 @@ namespace connect4 //Ignore commented out code please.
                 }
                 //WIN CONDITIONS START HERE
                 //DIAGONAL DOWN AND TO THE RIGHT WIN LOGIC
-                try
-                {
-                    for(int i = 0; i < Arena.Array.GetLength(0); i++)
+                for (int i = 0; i <= Arena.Array.GetLength(0) - 4; i++)//this part keeps both i + 3 and j + 3 in bounds
+                {                                                      
+                    for (int j = 0; j <= Arena.Array.GetLength(1) - 4; j++)
                     {
-                        for(int j = 0; j < Arena.Array.GetLength(1); j++)
+                        if (Arena.Array[i, j] == CurrentPlayer.Token &&
+                            Arena.Array[i + 1, j + 1] == CurrentPlayer.Token &&
+                            Arena.Array[i + 2, j + 2] == CurrentPlayer.Token &&
+                            Arena.Array[i + 3, j + 3] == CurrentPlayer.Token)
                         {
-                            if (Arena.Array[i,j] == CurrentPlayer.Token && Arena.Array[i+1,j+1] == CurrentPlayer.Token && Arena.Array[i+3,j+3] == CurrentPlayer.Token)
-                            {
-                                Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
-                                GameEnd = true;
-                            }
+                            Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
+                            GameEnd = true;
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    //Exception catching prevents game crash and allows us to brute force check win coniditions without having to also check if the array search goes out of bounds.
                 }
 
-                //DIAGONAL DOWN AND TO THE LEFT WIN LOGIC
-                try
+                // //DIAGONAL DOWN AND TO THE LEFT LOGIC
+                for (int i = 0; i <= Arena.Array.GetLength(0) - 4; i++) //makes sure  j -3 doesn't go bolow column 0 and i + 3 stays smaller or equal to 5
                 {
-                    for (int i = 0; i < Arena.Array.GetLength(0); i++)
+                    for (int j = 3; j < Arena.Array.GetLength(1); j++)
                     {
-                        for (int j = 0; j < Arena.Array.GetLength(1); j++)
+                        if (Arena.Array[i, j] == CurrentPlayer.Token &&
+                            Arena.Array[i + 1, j - 1] == CurrentPlayer.Token &&
+                            Arena.Array[i + 2, j - 2] == CurrentPlayer.Token &&
+                            Arena.Array[i + 3, j - 3] == CurrentPlayer.Token)
                         {
-                            if (Arena.Array[i,j] == CurrentPlayer.Token && Arena.Array[i+1, j-1] == CurrentPlayer.Token && Arena.Array[i+2, j-2] == CurrentPlayer.Token && Arena.Array[i+3, j-3] == CurrentPlayer.Token)
-                            {
-                                Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
-                                GameEnd = true;
-                            }
+                            Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
+                            GameEnd = true;
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    //continue;
                 }
 
-                //UP AND DOWN WIN LOGIC
-                try
+                // UP AND DOWN WIN LOGIC
+                for (int i = 0; i <= Arena.Array.GetLength(0) - 4; i++)//makes sure i + 3 doesn't go above row index 5
                 {
-                    for (int i = 0; i < Arena.Array.GetLength(0); i++)
+                    for (int j = 0; j < Arena.Array.GetLength(1); j++)
                     {
-                        for (int j = 0; j < Arena.Array.GetLength(1); j++)
+                        if (Arena.Array[i, j] == CurrentPlayer.Token &&
+                            Arena.Array[i + 1, j] == CurrentPlayer.Token &&
+                            Arena.Array[i + 2, j] == CurrentPlayer.Token &&
+                            Arena.Array[i + 3, j] == CurrentPlayer.Token)
                         {
-                            if (Arena.Array[i, j] == Arena.Array[i + 1, j] && Arena.Array[i, j] == Arena.Array[i + 2, j] && Arena.Array[i, j] == Arena.Array[i+3, j] && Arena.Array[i, j] != '#')
-                            {
-                                Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
-                                GameEnd = true;
-                            }
+                            Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
+                            GameEnd = true;
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    //continue;
                 }
 
-                //LEFT AND RIGHT WIN LOGIC
-                try
+                // LEFT AND RIGHT WIN LOGIC
+                for (int i = 0; i < Arena.Array.GetLength(0); i++)
                 {
-                    for (int i = 0; i < Arena.Array.GetLength(0); i++)
+                    for (int j = 0; j <= Arena.Array.GetLength(1) - 4; j++)//make sure j + 3 doesn't go above column index 6
                     {
-                        for (int j = 0; j < Arena.Array.GetLength(1); j++)
+                        if (Arena.Array[i, j] == CurrentPlayer.Token &&
+                            Arena.Array[i, j + 1] == CurrentPlayer.Token &&
+                            Arena.Array[i, j + 2] == CurrentPlayer.Token &&
+                            Arena.Array[i, j + 3] == CurrentPlayer.Token)
                         {
-                            if (Arena.Array[i,j] == CurrentPlayer.Token && Arena.Array[i, j+1] == CurrentPlayer.Token && Arena.Array[i, j+2] == CurrentPlayer.Token && Arena.Array[i, j+3] == CurrentPlayer.Token)
-                            {
-                                Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
-                                GameEnd = true;
-                            }
+                            Console.WriteLine("\n" + CurrentPlayer.Name + " Wins");
+                            GameEnd = true;
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    //continue;
                 }
 
 
@@ -259,11 +244,6 @@ namespace connect4 //Ignore commented out code please.
                 
                 currentPlayer = 1 - currentPlayer;//switches turn, THIS IS A GENIUS PIECE OF CODE
             }            
-        }
-
-        public void GameWin()
-        {
-
         }
         //====================================GAME START LOGIC===============================
         public class GameManager//main logic goes here

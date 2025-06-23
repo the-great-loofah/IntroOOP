@@ -27,3 +27,11 @@ C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff (1)\IntroOOP-AngelBar
 C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff (1)\IntroOOP-AngelBarron2-playerstuff\connect4\bin\Debug\connect4.exe.config
 C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff (1)\IntroOOP-AngelBarron2-playerstuff\connect4\bin\Debug\connect4.exe
 C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff (1)\IntroOOP-AngelBarron2-playerstuff\connect4\bin\Debug\connect4.pdb
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\bin\Debug\connect4.exe.config
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\bin\Debug\connect4.exe
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\bin\Debug\connect4.pdb
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\obj\Debug\connect4.csproj.AssemblyReference.cache
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\obj\Debug\connect4.exe.config
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\obj\Debug\connect4.csproj.CoreCompileInputs.cache
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\obj\Debug\connect4.exe
+C:\Users\angel\Downloads\IntroOOP-AngelBarron2-playerstuff\IntroOOP-AngelBarron2-playerstuff\connect4\obj\Debug\connect4.pdb
