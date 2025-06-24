@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace connect4 //Ignore commented out code please.
 {
     //==========================Player Object==============================================
-    public class Player
+    public abstract class Player //changed to abstract to allow for an AI split dreived from these base attributes.
     {
         public string Name { get; set; }
         public int Wins;
@@ -23,6 +23,25 @@ namespace connect4 //Ignore commented out code please.
         }
      
 
+    }
+    //================================Human player object============================================
+    public class HumanPlayer : Player //inherited from player, allows for a split to create AI from aswell.
+    {
+        public HumanPlayer(string name) : base(name)
+        {
+            Name = name;
+            Wins = 0;
+        }
+
+    }
+    //=================================AI Player Object===========================================
+    public class AiPlayer : Player
+    {
+        public AiPlayer(string name) : base(name)
+        {
+            Name = name;
+            Wins = 0;
+        }
     }
     //================================Board Object================================================
     public class Board
@@ -70,22 +89,6 @@ namespace connect4 //Ignore commented out code please.
             Console.WriteLine("   |");
         }
 
-        /*public void Turn()
-        {
-            if(PlayerTurn == true)                                      //|DEBUG|
-            {
-                PlayerCard = 'X';
-                Console.WriteLine("Select a column");
-
-                PlayerTurn = !PlayerTurn;
-            }
-            else
-            {
-                PlayerCard = 'O';
-                Console.WriteLine("Select a column");
-                PlayerTurn = !PlayerTurn;
-            }
-        }*/
         public bool DropToken(int column, char token)
         {
             for (int row = Array.GetLength(0) - 1; row >= 0; row--)
@@ -107,6 +110,13 @@ namespace connect4 //Ignore commented out code please.
         private Player Player2;
         private bool Win = false; //checks for a player winning
         private bool GameEnd = false; // singular flag to break the while loop that runs the game.
+
+        public CreateGame(Board board, Player player1) // overloaded constructor for single player
+        {
+            Arena = board;
+            Player1 = player1;
+            Player2 = new AiPlayer("AI");
+        }
         public CreateGame(Board board, Player player1, Player player2)
         {
             Arena = board;
@@ -238,11 +248,11 @@ namespace connect4 //Ignore commented out code please.
                     GameEnd = true;
                     Console.WriteLine("\nThe game was a tie");
                 }
-                counter = 0;//resets the counter after every pass through the array
+                counter = 0;//resets the counter after every pass through the array, redundancy incase future code needs to be placed here
 
                 Arena.PrintBoard();//reprints the board
                 
-                currentPlayer = 1 - currentPlayer;//switches turn, THIS IS A GENIUS PIECE OF CODE
+                currentPlayer = 1 - currentPlayer;//switches turn, THIS IS A GENIUS PIECE OF CODE - J
             }            
         }
         //====================================GAME START LOGIC===============================
@@ -256,6 +266,10 @@ namespace connect4 //Ignore commented out code please.
 
                 while (!command.Equals("exit", StringComparison.OrdinalIgnoreCase))// the EXIT and exit was giving soms problems, this way it ignores caps
                 {
+                    if(command == "1")
+                    {
+                        OnePlayerGame();
+                    }
                     if (command == "2")
                     {
                         TwoPlayerGame();
@@ -272,15 +286,21 @@ namespace connect4 //Ignore commented out code please.
                 Console.WriteLine("\nThanks for playing!");
             }
 
+            private void OnePlayerGame()
+            {
+                Console.WriteLine("Sorry, AI player has not yet been implemented");
+                Run();
+            }
+
             private void TwoPlayerGame()
             {
                 Console.WriteLine("Please choose Player 1's name:");
                 string player1 = Console.ReadLine();
-                Player p1 = new Player(player1);
+                Player p1 = new HumanPlayer(player1); //Setting it up this way allows us to have a list composed of players or a player and AI 
 
                 Console.WriteLine("Please choose Player 2's name:");
                 string player2 = Console.ReadLine();
-                Player p2 = new Player(player2);
+                Player p2 = new HumanPlayer(player2); 
 
                 Board board = new Board();
                 CreateGame game = new CreateGame(board, p1, p2);
