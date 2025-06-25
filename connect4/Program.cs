@@ -82,7 +82,7 @@ namespace connect4 //Ignore commented out code please.
             }
 
             Console.Write("|   ");
-            for (int i = 0; i < Width; i++)
+            for (int i = 1; i < Width + 1; i++)
             {
                 Console.Write(i + " "); //Prints the column number underneath the board
             }
@@ -148,18 +148,18 @@ namespace connect4 //Ignore commented out code please.
             {   
                 Player CurrentPlayer = players[currentPlayer];//checks whos turn it is
                 Console.WriteLine($"\n{CurrentPlayer.Name}'s Turn (Token: {CurrentPlayer.Token})");//tells whos turn it is and what there token is
-                Console.Write("Choose a column (0–6): ");
+                Console.Write("Choose a column (1–7): ");
 
                 string input = Console.ReadLine(); //reads player choice
                 int column; //variable to hold collumn choice
 
-                if (!int.TryParse(input, out column) || column < 0 || column >= 7)// converts string to into integer. will fail if it can't be converted
+                if (!int.TryParse(input, out column) || column <= 0 || column >= 8)// converts string to into integer. will fail if it can't be converted
                 {                                                                 //or it the integer is outside of the 0-6 range
-                    Console.WriteLine("Invalid column. Enter a number from 0 to 6.");
+                    Console.WriteLine("Invalid column. Enter a number from 1 to 7.");
                     continue;// redoes the loop and asks the same player again
                 }
 
-                bool success = Arena.DropToken(column, CurrentPlayer.Token);// drops token, will come back false if collumn is full
+                bool success = Arena.DropToken(column - 1, CurrentPlayer.Token);// drops token, will come back false if collumn is full
                 if (!success)
                 {
                     Console.WriteLine("Column is full. Try another one.");
