@@ -6,7 +6,8 @@ using System.Security.Cryptography;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
-
+//Angel 474361
+//Junaid Matyas-Hussain 443437
 namespace connect4 //Ignore commented out code please.
 {
     //==========================Player Object==============================================
